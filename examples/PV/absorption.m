@@ -95,6 +95,7 @@ I{2*g}=[I{2*g-1}(1,1)*exp(i*gamma(g)*hauteur(g)),I{2*g-1}(1,2)*exp(i*gamma(g)*ha
 % At the top and bottom of each layer
 %
 
+poynting=zeros(1,2*g)
 w=1;
 if (pol == 0)	%TE
   for j=1:2*g		
@@ -109,7 +110,7 @@ else		%TM
 end
 
 % Absorption in each layer
-tmp=abs(-diff(Poynting));
+tmp=abs(-diff(poynting));
 absorb=tmp(1:2:2*g-1);
 % reflection coefficient of the whole structure
 r=A{size(A,2)}(1,1); 

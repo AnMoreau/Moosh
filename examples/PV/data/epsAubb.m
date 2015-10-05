@@ -13,12 +13,9 @@ sigma=[0.742,0.349,0.830,1.246,1.795];
 a=sqrt(w*(w+i*Gamma));
 a=a.*sign(real(a));
 x=(a-omega)./(sqrt(2)*sigma);
-#x=x.*sign(real(x));
 y=(a+omega)./(sqrt(2)*sigma);
-#y=y.*sign(real(x));
 % Conversion
 
-#epsilon=1-omega_p^2*f0/(w*(w-i*Gamma0))+sum(i*sqrt(pi).*f*omega_p^2./(2*sqrt(2).*a.*sigma).*(2-cerf(x)-cerf(y)));
 epsilon=1-omega_p^2*f0/(w*(w+i*Gamma0))+sum(i*sqrt(pi).*f.*omega_p^2./(2*sqrt(2).*a.*sigma).*(faddeeva(x,64)+faddeeva(y,64)));
 
 end

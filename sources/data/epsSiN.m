@@ -1,5 +1,3 @@
-# La longueur d'onde s'exprime en nanometres
-# Wavelength in nanometers
 
 function permittivity=epsSiN(lambda)
 

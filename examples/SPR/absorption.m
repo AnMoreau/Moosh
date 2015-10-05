@@ -109,7 +109,7 @@ else		%TM
 end
 
 % Absorption in each layer
-tmp=abs(-diff(Poynting));
+tmp=abs(-diff(poynting));
 absorb=tmp(1:2:2*g-1);
 % reflection coefficient of the whole structure
 r=A{size(A,2)}(1,1); 

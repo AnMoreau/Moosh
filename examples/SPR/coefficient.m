@@ -1,4 +1,4 @@
-1%
+%
 % [r,R,t,T]=coefficient(theta,lambda,polarization)
 %
 % This function computes the reflection and transmission coefficients

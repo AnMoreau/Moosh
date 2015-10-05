@@ -203,7 +203,7 @@ V=abs(En).^2;
 colormap(jet);
 
 % Generating an image with octave
- imwrite(uint8(V/abs(max(max(V)))*63)+1,jet,"light_wheel.jpg");
+% imwrite(uint8(V/abs(max(max(V)))*63)+1,jet,'light_wheel.jpg');
 
 %image_viewer("eog %s")
 image(V/max(max(V))*128);

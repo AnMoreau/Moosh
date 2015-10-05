@@ -82,4 +82,4 @@ R=abs(r)^2;
 % Energy transmission coefficient;
 T=abs(t)^2*gamma(g)*f(Type(1))/(gamma(1)*f(Type(g)));
 
-endfunction
+end

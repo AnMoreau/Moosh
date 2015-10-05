@@ -47,7 +47,7 @@ figure(11)
 subplot(2,1,1)
 plot(lambda,Ab(:,Layer),'linewidth',2),ylabel('Absorption'),xlabel('Wavelength'),title('Absorption in gold (blue) and chromium (green)');
 hold on
-plot(lambda,Ab(:,2),'linewidth',2,'g')
+plot(lambda,Ab(:,2),'g','linewidth',2)
 hold off
 
 
