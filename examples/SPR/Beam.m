@@ -3,7 +3,8 @@
 clear all
 figure(13)
 
-addpath("data/:");
+addpath(genpath(fullfile(fileparts(pwd),'data/')));
+addpath('data/:');
 
 % Wavelength in vacuum.
 
@@ -150,6 +151,6 @@ colormap(jet);
 
 % Generating an image with octave
 
-imwrite(uint8(V/abs(max(max(V)))*63)+1,jet,"spr.jpg");
+imwrite(uint8(V/abs(max(max(V)))*63)+1,jet,'spr.jpg');
 
 imagesc(V/max(max(V))*128);

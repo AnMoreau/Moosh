@@ -4,7 +4,8 @@
 clear all
 more off 
 
-addpath("data/:");
+addpath(genpath(fullfile(fileparts(pwd),'data/')));
+addpath('data/');
 
 % Working wavelength
 lambda=700;

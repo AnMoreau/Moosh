@@ -24,12 +24,12 @@ Npoints=200;
 % Structure geometrical parameters
 structure
 
-Ab=zeros(Npoints,length(type));
+Ab=zeros(Npoints,length(Type));
 theta=linspace(min,max,Npoints);
 
 for k=1:Npoints		
-
-	[r(k),t(k)]=coefficient(theta(k)*pi/180,lambda,polarization);
+     tmp=theta(k)/180*pi;
+	[r(k),t(k)]=coefficient(tmp,lambda);
 
 end
 

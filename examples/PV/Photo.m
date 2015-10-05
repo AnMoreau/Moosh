@@ -1,8 +1,8 @@
 % This program computes the short-circuit current for a photovoltaics device.
 
 clear all
-
-addpath("data/:");
+addpath(genpath(fullfile(fileparts(pwd),'data/')));
+addpath('data/');
 
 % Spectral range -- in nanometers.
 % lambda_min>280 nm

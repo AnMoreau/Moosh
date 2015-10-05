@@ -8,8 +8,6 @@
 
 function Profile(kx,lambda)
 
-addpath("data/:");
-
 structure
 
 if(length(Type)<3)
@@ -134,8 +132,8 @@ t=(1:t-1);
 
 % -------------- Vizualisation --------------------------
 
-for i=1:length(hauteur)
-y(i,1)=sum(ny(1:i));
+for k=1:length(hauteur)
+y(k,1)=sum(ny(1:k));
 end
 y(:,2)=y(:,1)+1/(y(length(hauteur),1)*1000);
 
@@ -144,9 +142,9 @@ V1=real(E);
 figure(1)
 hold on
 plot(t',V1(t,1),'linewidth',4),xlabel('Position in the slab thickness'),ylabel('Field');
-for i=1:length(hauteur)
+for k=1:length(hauteur)
 m=min(V1(t,1)); M=max(V1(t,1));
-plot(y(i,:),[m,M],'r','linewidth',2);
+plot(y(k,:),[m,M],'r','linewidth',2);
 end
 hold off
 

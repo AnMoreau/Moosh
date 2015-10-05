@@ -2,7 +2,8 @@
 
 clear all
 
-addpath("data/:");
+addpath(genpath(fullfile(fileparts(pwd),'data/')));
+addpath('data/');
 
 % Wavelength in vacuum.
 

@@ -12,7 +12,7 @@ e=[4.7309e-23,1.2307e-21,5.6895e-21,1.5662e-19,1.1946e-18,4.5436e-18,1.8452e-17,
 
 spectre=interp1(a,e,lambda);
 
-endfunction
+end
 
 
 

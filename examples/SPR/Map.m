@@ -3,7 +3,7 @@
 
 clear all
 more off 
-
+addpath(genpath(fullfile(fileparts(pwd),'data/')));
 addpath("data/:");
 
 % Working wavelength

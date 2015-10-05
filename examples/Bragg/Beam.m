@@ -144,12 +144,11 @@ end
 
 figure(1)
 V=abs(En);
+% If you want to see the real part of the field
 %V=real(En);
 colormap(jet);
 
 % Generating an image with octave
- A=imread("test.jpg");
- imwrite(uint8(V/abs(max(max(V)))*63)+1,jet,"bragg.jpg");
-
+% imwrite(uint8(V/abs(max(max(V)))*63)+1,jet,"bragg.jpg");
 
 image(V/max(max(V))*128);

@@ -1,4 +1,4 @@
-%
+1%
 % [r,R,t,T]=coefficient(theta,lambda,polarization)
 %
 % This function computes the reflection and transmission coefficients
@@ -16,7 +16,7 @@ function [r,R,t,T]=coefficient(theta,lambda,varargin)
 
 structure
 
-if size(varargin)!=0
+if size(varargin)~=0
  pol=varargin{1};
 end
 

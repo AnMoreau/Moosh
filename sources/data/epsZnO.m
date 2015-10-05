@@ -5,6 +5,7 @@ if ((lambda>350)&&(lambda<1100))
 eps=1+2.612*lambda^2/(lambda^2-224.627^2);
 else
 disp('Out of range for ZnO')
-endif
+eps=0;
+end
 
-endfunction
+end

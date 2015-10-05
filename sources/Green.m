@@ -2,6 +2,8 @@
 % perpendicular to the plane.
 
 clear all
+addpath(genpath(fullfile(fileparts(pwd),'data/')));
+addpath('data/');
 
 % Wavelength in nm
 lambda=800;

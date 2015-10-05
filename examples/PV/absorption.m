@@ -17,9 +17,9 @@ function [absorb,r,R,t,T]=absorption(theta,lambda,varargin)
 % Calling "structure.m"
 structure
 
-if size(varargin)!=0
+if size(varargin)~=0
 pol=varargin{1};
-endif
+end
 
 % In order to get a phase that corresponds to the expected reflected coefficient,
 % we make the height of the upper (lossless) medium vanish. It changes only the
@@ -109,7 +109,8 @@ else		%TM
 end
 
 % Absorption in each layer
-absorb=abs(-diff(poynting))(1:2:2*g-1);
+tmp=abs(-diff(Poynting));
+absorb=tmp(1:2:2*g-1);
 % reflection coefficient of the whole structure
 r=A{size(A,2)}(1,1); 
 % transmission coefficient of the whole structure

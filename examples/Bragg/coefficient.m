@@ -16,7 +16,7 @@ function [r,R,t,T]=coefficient(theta,lambda,varargin)
 
 structure
 
-if size(varargin)!=0
+if size(varargin)~=0
  pol=varargin{1};
 end
 
@@ -82,4 +82,4 @@ R=abs(r)^2;
 % Energy transmission coefficient;
 T=abs(t)^2*gamma(g)*f(Type(1))/(gamma(1)*f(Type(g)));
 
-end
+endfunction

@@ -5,6 +5,7 @@
 % Once the modes are found, try "Profile(modes(k))" to get the profile of the k-th mode. 
 
 clear all
+addpath(genpath(fullfile(fileparts(pwd),'data/')));
 addpath("data/:");
 % Working wavelength
 lambda=700;

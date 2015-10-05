@@ -4,7 +4,8 @@
 
 clear all
 clf
-addpath('data/:');
+addpath(genpath(fullfile(fileparts(pwd),'data/')));
+addpath('data/');
 
 % >>>>>>>>>>>>>>>>>>> Parameters <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 % Number of the layer where the absorption has to be computed

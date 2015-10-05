@@ -10,7 +10,7 @@ clf
 % Number of the layer where the absorption has to be computed
 Layer=2;
 % Workgin wavelength
-lambda=600;		
+lambda=600;
 % Polarization - 0 means s or TE; 1 means p or TM.
 polarization=1;
 % Angular range in degrees here

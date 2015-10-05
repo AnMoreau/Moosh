@@ -24,4 +24,4 @@ aha=i*sqrt(pi).*f.*omega_p^2./(2*sqrt(2).*a.*sigma).*(faddeeva(x,64)+faddeeva(y,
 epsilon=1-omega_p^2*f0/(w*(w+i*Gamma0))+sum(aha);
 #(2-cerf(x)-cerf(y)));
 
-endfunction
+end
