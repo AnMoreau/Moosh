@@ -39,9 +39,12 @@ g=length(Type);
 gamma=sqrt(Epsilon(Type).*Mu(Type).*k0^2-ones(1,g)*kx^2);
 gamma(2:g-1)=gamma(2:g-1).*(1-2*(imag(gamma(2:g-1))<0));
 gamma(1)=extsqrt(Epsilon(Type(1))*k0.^2-kx.^2);
-gamma(2)=intsqrt(Epsilon(Type(2)).*Mu(Type(2)).*k0^2-kx^2);
-gamma(g-1)=intsqrt(Epsilon(Type(g-1)).*Mu(Type(g-1)).*k0^2-kx^2);
+gamma(2)=extsqrt(Epsilon(Type(2)).*Mu(Type(2)).*k0^2-kx^2);
+%gamma(2)=intsqrt(Epsilon(Type(2)).*Mu(Type(2)).*k0^2-kx^2);
+%gamma(g-1)=intsqrt(Epsilon(Type(g-1)).*Mu(Type(g-1)).*k0^2-kx^2);
+gamma(g-1)=extsqrt(Epsilon(Type(g-1)).*Mu(Type(g-1)).*k0^2-kx^2);
 gamma(g)=extsqrt(Epsilon(Type(g))*k0.^2-kx.^2);
+% If you experience problems with this program, contact us. A another determination of the square root may have to be considered.
 
 % First transfer matrix
 
