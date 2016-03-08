@@ -24,7 +24,7 @@ grad=(fct(z+dz,lambda)-fct(z-dz,lambda))/(2*dz)+i*(fct(z+i*dz,lambda)-fct(z-i*dz
   if (abs(grad)~=0)
     grad=grad/abs(grad);
   else
-    % Hum, why would we be exactly zero ? That's weird...
+    % Hum, why would it be exactly zero ? That's weird...
     % Let's make it an error
     msg=1000;
     break

@@ -150,7 +150,6 @@ V=real(En);
 colormap(jet);
 
 % Generating an image with octave
-
-imwrite(uint8(V/abs(max(max(V)))*63)+1,jet,'spr.jpg');
+%imwrite(uint8(V/abs(max(max(V)))*63)+1,jet,'spr.jpg');
 
 imagesc(V/max(max(V))*128);

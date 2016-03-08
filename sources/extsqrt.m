@@ -1,5 +1,5 @@
 %_____________________________
-%définition de la coupure pour les deux milieux externes situés aux extrémités de la structure
+% Specific determination of the square root for inner media. 
 %_____________________________
 function truc=extsqrt(z)
 
