@@ -1,17 +1,26 @@
-% This program tries to find all the guided modes of a given structure. It must be provided
-% with a effective index range, though (ie a range of propagation constants where to look
-% for solutions of the dipersion relation). 
-%
-% Once the modes are found, try "Profile(modes(k))" to get the profile of the k-th mode. 
+
 
 clear all
+more off
 addpath(genpath(fullfile(fileparts(pwd),'data/')));
 addpath('data/');
 
-% Working wavelength
-lambda=700;
-k0=2*pi/lambda;
+% Wavelength range
 
+l_min=400;
+l_max=800;
+
+% Number of steps
+n_steps=101;
+
+lam=linspace(l_min,l_max,n_steps);
+
+% initialization - like Guided modes
+
+for kk=1:n_steps
+
+lambda=lam(kk);
+k0=2*pi/lambda;
 % Effective index range where to look for guided modes
 % To find a guided mode if the structure is made only of dielectrics
 % use the lowest material index as a lower bound, and the highest index
@@ -19,10 +28,8 @@ k0=2*pi/lambda;
 % With metals, you can choose 0 as a lower bound and there is not perfectly
 % correct upper bound when high-k guided modes are studied (gap-plasmons, short-range
 % surface plasmons).
-
 n_min=1.05;
 n_max=2.352;
-
 % >>>>>>>>>>>>>> Advanced parameters <<<<<<<<<<<<<<<<<<<<<<<<
 % These parameters may need to be changed if the program can't
 % find satisfying solutions. No rule here, you just have to guess
@@ -41,9 +48,7 @@ step=0.05*k0;
 % If it is not low enough, the values of the propagation constants may change
 % when "precision" is changed.
 precision=1e-13;
-
-% >>>>>>>>>>>>>> Mode retrieval <<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
+% >>>>>>>>>>>>>> First mode retrieval <<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 kx_start=linspace(n_min*k0,n_max*k0,Nstart);
 structure
 % Using the semi-analytical dispersion relation, a few layers are required.
@@ -72,8 +77,27 @@ for k=1:length(kx_start)
 end
 modes=modes(2:length(modes));
 
-disp('Effective indexes of the modes')
-disp(modes.'/k0)
-disp('Propagation constants stored in variable "modes"')
+if (kk==1)
+relation=[lambda,modes];
+else
+if (length(modes)<(size(relation)(2)-1))
+modes=[modes,zeros(1,size(relation)(2)-1-length(modes))];
+end
+
+if (length(modes)>(size(relation)(2)-1))
+relation=[relation,zeros(size(relation)(1),1)];
+end
+
+relation=[relation;lambda,modes]
+end
 
 end
+
+
+figure(1)
+clf
+hold on
+for k=1:length(modes)
+  color=substr("krgbymcw",rem(k,8)+1,1);
+  plot(1.239841974583151e-06./relation(:,1),real(relation(:,k+1)),color,'linewidth',3)
+endfor

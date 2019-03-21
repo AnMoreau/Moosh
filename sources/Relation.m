@@ -1,17 +1,21 @@
-% This program tries to find all the guided modes of a given structure. It must be provided
-% with a effective index range, though (ie a range of propagation constants where to look
-% for solutions of the dipersion relation). 
-%
-% Once the modes are found, try "Profile(modes(k))" to get the profile of the k-th mode. 
+
 
 clear all
+more off
 addpath(genpath(fullfile(fileparts(pwd),'data/')));
 addpath('data/');
 
-% Working wavelength
-lambda=700;
-k0=2*pi/lambda;
+% Wavelength range
 
+l_min=400;
+l_max=800;
+% Number of steps
+n_steps=301;
+
+% initialization - like Guided modes
+
+lambda=l_min;
+k0=2*pi/lambda;
 % Effective index range where to look for guided modes
 % To find a guided mode if the structure is made only of dielectrics
 % use the lowest material index as a lower bound, and the highest index
@@ -19,10 +23,8 @@ k0=2*pi/lambda;
 % With metals, you can choose 0 as a lower bound and there is not perfectly
 % correct upper bound when high-k guided modes are studied (gap-plasmons, short-range
 % surface plasmons).
-
-n_min=1.05;
+n_min=0.95;
 n_max=2.352;
-
 % >>>>>>>>>>>>>> Advanced parameters <<<<<<<<<<<<<<<<<<<<<<<<
 % These parameters may need to be changed if the program can't
 % find satisfying solutions. No rule here, you just have to guess
@@ -41,11 +43,11 @@ step=0.05*k0;
 % If it is not low enough, the values of the propagation constants may change
 % when "precision" is changed.
 precision=1e-13;
-
-% >>>>>>>>>>>>>> Mode retrieval <<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
+% >>>>>>>>>>>>>> First mode retrieval <<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 kx_start=linspace(n_min*k0,n_max*k0,Nstart);
+
 structure
+
 % Using the semi-analytical dispersion relation, a few layers are required.
 if(length(Type)<3)
 disp('You have to put at least 3 layers in the structure to find a guided mode');
@@ -72,8 +74,31 @@ for k=1:length(kx_start)
 end
 modes=modes(2:length(modes));
 
-disp('Effective indexes of the modes')
-disp(modes.'/k0)
-disp('Propagation constants stored in variable "modes"')
+disp("Initialization complete")
 
+relation=[lambda,modes];
+lam=linspace(l_min,l_max,n_steps);
+precision=1e-13;
+for k=2:n_steps
+  chaine=strcat("Step ",int2str(k));
+  disp(chaine)
+  lambda=lam(k);
+  k0=2*pi/lambda;  
+  step=0.01*k0;
+  structure
+  for m=1:length(modes)   
+   tmp_modes(m)=descent(lambda,modes(m)*lam(k-1)/lam(k),step,precision,@dispersion);
+  end
+  relation=[relation;lambda,tmp_modes];
 end
+
+figure(1)
+clf
+hold on
+for k=1:length(modes)
+  color=strcat("*",substr("krgbymcw",rem(k,8)+1,1));
+  plot(real(relation(:,k+1)),1.239841974583151e-06./relation(:,1),color,'linewidth',3)
+endfor
+hold off
+
+save -text relation.dat relation

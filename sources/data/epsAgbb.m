@@ -19,5 +19,4 @@ y=(a+omega)./(sqrt(2)*sigma);
 aha=i*sqrt(pi).*f.*omega_p^2./(2*sqrt(2).*a.*sigma).*(faddeeva(x,64)+faddeeva(y,64));
 epsilon=1-omega_p^2*f0/(w*(w+i*Gamma0))+sum(aha);
 
-
 end

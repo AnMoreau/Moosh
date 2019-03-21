@@ -149,6 +149,6 @@ V=abs(En);
 colormap(jet);
 
 % Generating an image with octave
-% imwrite(uint8(V/abs(max(max(V)))*63)+1,jet,"bragg.jpg");
+ imwrite(uint8(V/abs(max(max(V)))*63)+1,jet,"bragg.jpg");
 
 image(V/max(max(V))*128);

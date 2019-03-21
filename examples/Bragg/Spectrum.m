@@ -45,7 +45,7 @@ subplot(2,1,1)
 plot(lambda,R,'linewidth',2),ylabel('Reflexion'),xlabel('Wavelength'),title('Reflection');
 
 subplot(2,1,2)
-plot(lambda,T,'linewidth',2),ylabel('Transmission'),xlabel('Wavelength'),title('Phase of the reflection coefficient');
+plot(lambda,angle(r),'linewidth',2),ylabel('Transmission'),xlabel('Wavelength'),title('Phase of the reflection coefficient');
 
 % For test reasons - R+T+Absorption = 1
 % R+T+Ab(:,Layer).'-1

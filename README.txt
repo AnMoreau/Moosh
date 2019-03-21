@@ -100,7 +100,10 @@ Profile.m : Profile must be called after Guidedmodes.m, typically with
 Profile(modes(n),lambda) to compute the profile of the n-th mode that
 has been found by Guidedmodes.m.
 
-Map.m : The "dispersion.m" function allows to see the solutions of the dispersion relation of a multilayered structure in the complex plane as zeros of "dispersion.m". Any zero of this function corresponds to a guided mode. 
+Map.m : The "dispersion.m" function allows to see the solutions of 
+the dispersion relation of a multilayered structure in the complex
+plane as zeros of "dispersion.m". Any zero of this function 
+corresponds to a guided mode. 
 
 * Punctual sources
 
