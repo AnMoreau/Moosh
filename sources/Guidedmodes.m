@@ -1,8 +1,8 @@
 % This program tries to find all the guided modes of a given structure. It must be provided
 % with a effective index range, though (ie a range of propagation constants where to look
-% for solutions of the dipersion relation). 
+% for solutions of the dipersion relation).
 %
-% Once the modes are found, try "Profile(modes(k))" to get the profile of the k-th mode. 
+% Once the modes are found, try "Profile(modes(k))" to get the profile of the k-th mode.
 
 clear all
 addpath(genpath(fullfile(fileparts(pwd),'data/')));
@@ -61,7 +61,7 @@ for k=1:length(kx_start)
 % Steepest descent in the complex plane to find a solution of the dispersion relation
   [kx,steps]=descent(lambda,kx_start(k),step,precision,@dispersion);
 %  steps
-% A guided mode has been found if the solution is far enough from any solution and 
+% A guided mode has been found if the solution is far enough from any solution and
 % if the steepest descent has succeed (ie not returned 1000)
   if ((steps~=1000)&&(min(abs(modes-kx))>2e-4*k0))
    modes=[modes,kx];
@@ -75,5 +75,3 @@ modes=modes(2:length(modes));
 disp('Effective indexes of the modes')
 disp(modes.'/k0)
 disp('Propagation constants stored in variable "modes"')
-
-end
