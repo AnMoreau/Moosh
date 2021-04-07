@@ -27,10 +27,10 @@ theta=20*pi/180;
 C=0.5;
 
 % Number of pixels horizontaly
-nx=d/30;
+nx=floor(d/30);
 
 % Number of pixels verticaly
-ny=floor(hauteur./2);
+ny=floor(hauteur/2);
 
 % Number of modes retained for the description of the field
 % so that the last mode has an amplitude < 1e-3 - you may want
@@ -51,7 +51,7 @@ if pol==0
 else
   f=Epsilon;
 end
-  
+
 k0=2*pi/l;
 
 En=zeros(sum(ny),nx+1);
@@ -79,7 +79,7 @@ if (g>2)
   gamma(2:g-1)=gamma(2:g-1).*(1-2*(imag(gamma(2:g-1))<0));
 end
 % Outgoing wave condition for the last medium
-    if (real(Epsilon(Type(g)))<0) && (real(Mu(Type(g)))<0) && (real(sqrt(Epsilon(Type(g))*Mu(Type(g))*k0^2-alpha^2))~=0) 
+    if (real(Epsilon(Type(g)))<0) && (real(Mu(Type(g)))<0) && (real(sqrt(Epsilon(Type(g))*Mu(Type(g))*k0^2-alpha^2))~=0)
 	gamma(g)=-sqrt(Epsilon(Type(g))*Mu(Type(g))*k0^2-alpha^2);
     else
       gamma(g)=sqrt(Epsilon(Type(g))*Mu(Type(g))*k0^2-alpha^2);
@@ -87,26 +87,26 @@ end
 
   for k=1:g-1
 % Layer scattering matrix
-    t=exp(i*gamma(k)*hauteur(k));    
-    T{2*k}=[0,t;t,0];   
+    t=exp(i*gamma(k)*hauteur(k));
+    T{2*k}=[0,t;t,0];
 % Interface scattering matrix
     b1=gamma(k)/f(Type(k));
     b2=gamma(k+1)/f(Type(k+1));
     T{2*k+1}=[b1-b2,2*b2;2*b1,b2-b1]/(b1+b2);
     end
 % Scattering matrix for the last layer
-    t=exp(i*gamma(g)*hauteur(g));    
+    t=exp(i*gamma(g)*hauteur(g));
     T{2*g}=[0,t;t,0];
 % Once the scattering matrixes have been prepared, now let us combine them.
-  
+
   H{1}=T{2*g};
   A{1}=T{1};
-  
+
   for j=1:size(T,2)-2
-    A{j+1}= cascade(A{j},T{j+1}); 	
+    A{j+1}= cascade(A{j},T{j+1});
     H{j+1}= cascade(T{size(T,2)-j},H{j});
   end
-  
+
 % And let us compute the intermediate coefficients from the scattering matrixes
 
   for j=1:size(T,2)-1
@@ -115,7 +115,7 @@ end
   end
 
   h=0;
-  
+
   I{2*g}=zeros(2,2);
 
 % Computation of the field in the different layers for one mode (plane wave)
@@ -130,9 +130,9 @@ end
 	end
     h=0;
   end
-  
+
 % For one mode, the image is invariant horizontally
-  E=E*exp(i*alpha*[0:nx]./nx);  
+  E=E*exp(i*alpha*[0:nx]./nx);
 
 % All the images have to be combined using the proper amplitude of each plane wave.
   En=En+X(nm)*E;
